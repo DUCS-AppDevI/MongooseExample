@@ -31,26 +31,6 @@ app.use(express.static("public"));
 
 app.use("/api", require("./api/students"))
 
-/* app.get('/list', async (req, res)=>{
-    // Retrieve a list of all students
-    const students = await (Student.find({gpa: {$gte: 3}}).sort({'gpa': 'desc'}))
-    let returnData = []
-    students.forEach((stu)=> {
-        let newStu = {student: stu.name, gpa: stu.gpa}
-        returnData.push(newStu)
-        console.log(`Student: ${stu.name} GPA: ${stu.gpa}`)
-    })
-    
-    // send the data back as an array of JSON objects
-    // accounting for an error
-    if (returnData.length > 0) {
-        res.status(200).json(returnData)
-    }
-    else {
-        res.status(404).json({err: 'Students not found'})
-    }
-}) */
-
 app.listen(PORT, (err)=>{
     if (err)
       console.log(`Server failed to start on port ${PORT}.`);
