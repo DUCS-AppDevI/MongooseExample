@@ -11,3 +11,6 @@ Running the example
 4. Open a second terminal and start the server using the command ```npm start```.
 5. You need to add students to the studb database in MongoDB by running the application from the web page at *localhost:3000*.
 6. You can list the students you have added to the database by *Postman* or your browser at *localhost:3000/list*.
+
+## Example using a RESTful API
+An example of the code implementing a RESTful API is included in the branch RESTfulAPI.  
