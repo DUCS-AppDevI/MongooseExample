@@ -23,34 +23,15 @@
 // 11/15/2023 Added route to list all students
 
 const express = require("express");
-const Student = require("./models/student");
 const PORT = 3000;
 const app = express();
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-// Route /create saves student data passed to it 
-// as urlencoded data from a form
-app.post("/create", (req, res) => {
+app.use("/api", require("./api/students"))
 
-    // Create a student from the submitted form data
-    let stu = new Student({
-        name: req.body.name,
-        gpa: req.body.gpa,
-        birthDate: new Date(req.body.birthdate)
-    });
-
-    stu.save((err, stu) => {
-        if (err) {
-            res.status(400).send(err);
-        } else {
-            res.send("Student was saved.");
-        }
-    });
-});
-
-app.get('/list', async (req, res)=>{
+/* app.get('/list', async (req, res)=>{
     // Retrieve a list of all students
     const students = await (Student.find({gpa: {$gte: 3}}).sort({'gpa': 'desc'}))
     let returnData = []
@@ -68,7 +49,8 @@ app.get('/list', async (req, res)=>{
     else {
         res.status(404).json({err: 'Students not found'})
     }
-})
+}) */
+
 app.listen(PORT, (err)=>{
     if (err)
       console.log(`Server failed to start on port ${PORT}.`);
